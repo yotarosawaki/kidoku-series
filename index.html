@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>既読シリーズ 4部作</title>
+<meta name="description" content="スマホのトーク画面だけで進む、返信サバイバルゲーム4部作。メンヘラ彼女、教育ママ、返信の遅い年上女性、六本木の外国人。ブラウザですぐ遊べます。">
+<meta property="og:title" content="既読シリーズ 4部作">
+<meta property="og:description" content="トーク画面だけで進む、返信サバイバルゲーム4部作。スマホのブラウザですぐ遊べます。">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://yotarosawaki.github.io/kidoku-series/">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#120c14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Dela+Gothic+One&display=swap">
+<style>
+:root{
+  --bg:#120c14; --bg2:#22121e; --card:#1d1520; --line:rgba(255,255,255,.1);
+  --fg:#fbeef4; --sub:#c6adbc; --dim:#8f7a88;
+  --green:#2fb24c;
+  --display:"Dela Gothic One","Hiragino Sans","Noto Sans JP",sans-serif;
+  --body:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Hiragino Kaku Gothic ProN","Noto Sans JP","Yu Gothic UI",Meiryo,sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);line-height:1.7}
+a{color:inherit}
+a:focus-visible{outline:2px solid #fff;outline-offset:3px}
+.wrap{max-width:720px;margin:0 auto;padding:0 16px}
+
+/* hero = night lockscreen */
+.hero{background:radial-gradient(120% 70% at 50% 0%,#4a1634 0%,var(--bg2) 38%,var(--bg) 78%);padding:40px 0 48px}
+.lock{text-align:center}
+.lock-date{font-size:13px;color:var(--sub);letter-spacing:.1em}
+.lock-time{font-size:64px;font-weight:200;line-height:1.1;font-variant-numeric:tabular-nums}
+.notifs{display:flex;flex-direction:column;gap:7px;margin:24px auto 0;max-width:420px}
+.notif{display:flex;gap:10px;align-items:center;background:rgba(255,255,255,.09);backdrop-filter:blur(8px);border-radius:14px;padding:9px 12px;animation:drop .5s cubic-bezier(.2,.8,.3,1.2) both}
+.notif:nth-child(2){animation-delay:.45s}.notif:nth-child(3){animation-delay:.9s}.notif:nth-child(4){animation-delay:1.35s}
+@keyframes drop{from{opacity:0;transform:translateY(-14px) scale(.96)}to{opacity:1;transform:none}}
+.ic{width:32px;height:32px;border-radius:9px;flex:none;display:grid;place-items:center;color:#fff;font-weight:700;font-size:15px}
+.tx{min-width:0;flex:1;font-size:13px;line-height:1.4}
+.tx b{display:flex;justify-content:space-between;font-size:12px}
+.tx b span{font-weight:400;color:var(--sub)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(42px,12vw,72px);line-height:1.1;margin:36px 0 0;text-align:center;letter-spacing:.02em}
+h1 small{display:block;font-size:.3em;letter-spacing:.24em;color:var(--sub);margin-bottom:10px}
+h1 em{font-style:normal;color:#ff5fa2;text-shadow:0 0 28px rgba(255,95,162,.45)}
+.lead{max-width:34em;margin:20px auto 0;text-align:center;font-size:15px;color:var(--fg);text-wrap:pretty}
+.points{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:22px 0 0;padding:0;list-style:none}
+.points li{font-size:12px;border:1px solid var(--line);border-radius:999px;padding:4px 12px;color:var(--sub)}
+
+/* games */
+.sec-h{font-size:12px;letter-spacing:.24em;color:var(--dim);margin:48px 0 16px;text-align:center}
+.games{display:grid;gap:18px;padding-bottom:16px}
+.game{--ac:#ff5fa2;position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:22px 20px 20px;overflow:hidden}
+.game::before{content:"";position:absolute;inset:0 0 auto 0;height:3px;background:var(--ac)}
+.no{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--dim);letter-spacing:.14em}
+.no b{font-family:var(--display);font-weight:400;font-size:22px;color:var(--ac);letter-spacing:0}
+.kicker{margin:10px 0 0;font-size:12px;color:var(--sub);letter-spacing:.06em}
+.game h3{font-family:var(--display);font-weight:400;font-size:clamp(28px,8vw,36px);line-height:1.2;margin:4px 0 0;color:var(--ac)}
+.bubble{display:inline-block;max-width:100%;margin:14px 0 0;background:#fff;color:#16181d;border-radius:4px 16px 16px 16px;padding:8px 13px;font-size:14px;line-height:1.5}
+.bubble small{display:block;font-size:11px;color:#6b7280}
+.game p.desc{margin:14px 0 0;font-size:14px;color:var(--fg)}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 0;padding:0;list-style:none}
+.meta li{font-size:12px;background:rgba(255,255,255,.06);border-radius:6px;padding:2px 9px;color:var(--sub)}
+.play{display:flex;align-items:center;justify-content:center;gap:8px;margin-top:18px;min-height:52px;border-radius:14px;background:var(--ac);color:#140a10;font-weight:700;font-size:16px;text-decoration:none;transition:transform .12s, filter .12s}
+.play:hover{filter:brightness(1.08)}
+.play:active{transform:scale(.98)}
+.play.soon{background:transparent;border:1px dashed var(--line);color:var(--dim);pointer-events:none}
+
+.g1{--ac:#ff5fa2}
+.g2{--ac:#ffb547}
+.g3{--ac:#c7a6ff}
+.g4{--ac:#ff6a3d}
+
+/* how */
+.how{display:grid;gap:10px;margin:0;padding:0;list-style:none;counter-reset:s}
+.how li{counter-increment:s;display:flex;gap:12px;align-items:flex-start;font-size:14px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 14px}
+.how li::before{content:counter(s);flex:none;width:24px;height:24px;border-radius:50%;background:var(--green);color:#fff;font-size:13px;font-weight:700;display:grid;place-items:center;margin-top:1px}
+
+.share{margin:40px 0 0;text-align:center}
+.share button{font:inherit;font-size:14px;color:var(--fg);background:transparent;border:1px solid var(--line);border-radius:999px;padding:10px 22px;cursor:pointer}
+.share button:focus-visible{outline:2px solid #fff;outline-offset:3px}
+footer{margin:40px 0 0;padding:24px 0 40px;border-top:1px solid var(--line);font-size:12px;color:var(--dim);text-align:center}
+
+@media (min-width:640px){
+  .games{grid-template-columns:1fr 1fr}
+  .game{display:flex;flex-direction:column}
+  .play{margin-top:auto}
+  .game p.desc{margin-bottom:18px}
+}
+@media (prefers-reduced-motion:reduce){.notif{animation:none}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="lock" aria-hidden="true">
+      <div class="lock-date">未読 4件のトーク</div>
+      <div class="lock-time">23:59</div>
+    </div>
+    <div class="notifs" aria-hidden="true">
+      <div class="notif"><div class="ic" style="background:#ff5fa2">み</div><div class="tx"><b>みゆ <span>22:06</span></b>なんで無視するの？</div></div>
+      <div class="notif"><div class="ic" style="background:#e3962b">マ</div><div class="tx"><b>ママ <span>17:12</span></b>既読、ついてるよね？</div></div>
+      <div class="notif"><div class="ic" style="background:#8a6fc4">あ</div><div class="tx"><b>あなた → 早瀬さん <span>21:30</span></b>おやすみなさい。（未読）</div></div>
+      <div class="notif"><div class="ic" style="background:#ff6a3d">J</div><div class="tx"><b>JAY 🔥 <span>23:44</span></b>キドク ムシ ダメ ヨ 😤</div></div>
+    </div>
+
+    <h1><small>トーク画面サバイバル</small>既読<em>シリーズ</em><br>4部作</h1>
+    <p class="lead">スマホのトーク画面だけで進む、返信ゲーム。<br>返すか、待つか、黙るか。<br>あなたの一言で、相手の気持ちも結末も変わります。</p>
+    <ul class="points">
+      <li>ブラウザですぐ遊べる</li>
+      <li>インストール・登録不要</li>
+      <li>1プレイ 約5〜10分</li>
+      <li>エンディング多数</li>
+    </ul>
+  </div>
+</header>
+
+<main class="wrap">
+  <h2 class="sec-h">4 GAMES</h2>
+  <div class="games">
+
+    <article class="game g1">
+      <div class="no"><b>01</b>メンヘラ彼女シミュレーター</div>
+      <h3>既読無視は、許さない。</h3>
+      <div class="bubble"><small>みゆ</small>既読つかないんだけど</div>
+      <p class="desc">サークルの飲み会の夜、彼女のみゆから連絡が止まらない。返信が遅いと「追いLINE」、早すぎても疑われる。不安と好感を見ながら、朝7時まで生き延びよう。</p>
+      <ul class="meta"><li>エンディング 全9種</li><li>難易度 3段階</li></ul>
+      <a class="play" href="https://yotarosawaki.github.io/kidoku-mushi/">トークを開く ›</a>
+    </article>
+
+    <article class="game g2">
+      <div class="no"><b>02</b>中学受験シミュレーター</div>
+      <h3>既読、ついてるよね？</h3>
+      <div class="bubble"><small>ママ</small>算数、また偏差値下がってるね</div>
+      <p class="desc">小6の11月、模試の結果が出た日。ママからのメッセージに、言い返すか、がまんするか。ときどき届くパパや友達の通知が心の支え。夜11時まで乗り切ろう。</p>
+      <ul class="meta"><li>エンディング 全9種</li><li>難易度 3段階</li></ul>
+      <a class="play" href="https://yotarosawaki.github.io/kidoku-juken/">トークを開く ›</a>
+    </article>
+
+    <article class="game g3">
+      <div class="no"><b>03</b>年上女性との、火のつかない恋</div>
+      <h3>既読が、つかない。</h3>
+      <div class="bubble"><small>早瀬 静香さん</small>…………（未読）</div>
+      <p class="desc">職場の飲み会で連絡先を交換した、経理部の早瀬さん（42）。上品で、おだやかで、返信がとにかく遅い。待つか、追いLINEか、もう寝るか。しけったマッチで恋に火をつけよう。</p>
+      <ul class="meta"><li>エンディング 全8種</li></ul>
+      <a class="play" href="https://yotarosawaki.github.io/kidoku-tsukanai/">トークを開く ›</a>
+    </article>
+
+    <article class="game g4">
+      <div class="no"><b>04</b>六本木で断りきれなかった夜</div>
+      <h3>Hey!! ネテル??</h3>
+      <div class="bubble"><small>JAY 🔥</small>You are so beautiful 😍😍😍</div>
+      <p class="desc">金曜の六本木で、断りきれずにLINEを交換してしまった。英語とカタコト日本語の連投と電話が止まらない。やさしくすると「脈あり」扱い。上手にフェードアウトできるか。</p>
+      <ul class="meta"><li>エンディング 全9種</li><li>難易度 3段階</li></ul>
+      <span class="play soon">まもなく公開</span>
+    </article>
+
+  </div>
+
+  <h2 class="sec-h">HOW TO PLAY</h2>
+  <ol class="how">
+    <li>遊びたい作品の「トークを開く」をタップ</li>
+    <li>届いたメッセージに、候補から選ぶか、自分で打って返信</li>
+    <li>返信が遅くても早すぎてもドラマが起きる。全エンディングの回収をめざそう</li>
+  </ol>
+
+  <div class="share"><button type="button" id="shareBtn">このページを友だちに送る</button></div>
+
+  <footer>
+    登場人物・出来事はすべてフィクションです。<br>
+    自由入力の文章は端末の中だけで判定し、どこにも送信しません。実在の人の名前は入力しないでください。<br>
+    スマホでの縦画面プレイがおすすめです。
+  </footer>
+</main>
+
+<script>
+document.getElementById('shareBtn').addEventListener('click', async () => {
+  const data = {title: '既読シリーズ 4部作', text: 'トーク画面だけで進む返信サバイバルゲーム4部作', url: location.href};
+  const btn = document.getElementById('shareBtn');
+  try {
+    if (navigator.share) { await navigator.share(data); return; }
+    await navigator.clipboard.writeText(location.href);
+    btn.textContent = 'リンクをコピーしました';
+  } catch (e) {}
+});
+</script>
+</body>
+</html>
